@@ -3,12 +3,19 @@ import pandas as pd
 import pickle
 import os
 
-model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+# Load model properly (for cloud also)
+current_dir = os.path.dirname(__file__)
+model_path = os.path.join(current_dir, "model.pkl")
+
 model = pickle.load(open(model_path, "rb"))
+
+st.set_page_config(page_title="AI Skill Gap Analyzer")
 
 st.title("🎓 AI Skill Gap Analyzer")
 
-st.write("Enter your skill levels (1 to 10)")
+st.write("Analyze whether you are suitable for Technical or Non-Technical career path")
+
+st.subheader("Enter Your Skill Levels (1 to 10)")
 
 python = st.slider("Python",1,10)
 ml = st.slider("Machine Learning",1,10)
@@ -46,22 +53,27 @@ if st.button("Analyze Career Path"):
         - Game Developer
         - System Engineer
         - Network Engineer
+        - IoT Engineer
+        - Data Engineer
+        - Automation Engineer
+        - Robotics Engineer
+        - Web Developer
         """)
 
-        st.subheader("📈 Skill Improvement Suggestions")
+        st.subheader("📈 Skills You Should Improve")
 
         if python < 7:
-            st.write("🔹 Improve Python")
+            st.warning("🔹 Improve Python")
         if ml < 7:
-            st.write("🔹 Improve Machine Learning")
+            st.warning("🔹 Improve Machine Learning")
         if communication < 7:
-            st.write("🔹 Improve Communication")
+            st.warning("🔹 Improve Communication")
         if sql < 7:
-            st.write("🔹 Improve SQL")
+            st.warning("🔹 Improve SQL")
         if statistics < 7:
-            st.write("🔹 Improve Statistics")
+            st.warning("🔹 Improve Statistics")
         if cloud < 7:
-            st.write("🔹 Improve Cloud")
+            st.warning("🔹 Improve Cloud")
 
     else:
 
@@ -85,12 +97,18 @@ if st.button("Analyze Career Path"):
         - Event Manager
         - Entrepreneur
         - Training Officer
+        - Talent Acquisition Specialist
+        - Brand Manager
+        - Business Development Executive
+        - Client Relationship Manager
+        - Startup Founder
         """)
 
-        st.subheader("📈 Skill Improvement Suggestions")
+        st.subheader("📈 Skills You Should Improve")
 
-        st.write("🔹 Improve Leadership")
-        st.write("🔹 Improve Presentation Skills")
-        st.write("🔹 Improve Decision Making")
-
-        st.write("🔹 Improve Communication")
+        if communication < 7:
+            st.warning("🔹 Improve Communication")
+        st.warning("🔹 Improve Leadership")
+        st.warning("🔹 Improve Decision Making")
+        st.warning("🔹 Improve Presentation Skills")
+        st.warning("🔹 Improve Team Management")
