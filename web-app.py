@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
 
-# Load model
-model = pickle.load(open("model.pkl", "rb"))
+model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+model = pickle.load(open(model_path, "rb"))
 
 st.title("🎓 AI Skill Gap Analyzer")
 
@@ -91,4 +92,5 @@ if st.button("Analyze Career Path"):
         st.write("🔹 Improve Leadership")
         st.write("🔹 Improve Presentation Skills")
         st.write("🔹 Improve Decision Making")
+
         st.write("🔹 Improve Communication")
