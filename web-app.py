@@ -3,13 +3,15 @@ import pandas as pd
 import pickle
 import os
 
+# Set page config FIRST (before any other streamlit commands)
+st.set_page_config(page_title="AI Skill Gap Analyzer")
+
 # Load model properly (for cloud also)
 current_dir = os.path.dirname(__file__)
 model_path = os.path.join(current_dir, "model.pkl")
 
-model = pickle.load(open(model_path, "rb"))
-
-st.set_page_config(page_title="AI Skill Gap Analyzer")
+with open(model_path, "rb") as f:
+    model = pickle.load(f)
 
 st.title("🎓 AI Skill Gap Analyzer")
 
@@ -58,7 +60,8 @@ if st.button("Analyze Career Path"):
         - Automation Engineer
         - Robotics Engineer
         - Web Developer
-        """)
+        """
+        )
 
         st.subheader("📈 Skills You Should Improve")
 
@@ -102,7 +105,8 @@ if st.button("Analyze Career Path"):
         - Business Development Executive
         - Client Relationship Manager
         - Startup Founder
-        """)
+        """
+        )
 
         st.subheader("📈 Skills You Should Improve")
 
